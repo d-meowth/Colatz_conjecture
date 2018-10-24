@@ -35,6 +35,7 @@ int main()
 	int c; // Press any key to continue
 	int major = 0; // Version
 	int minor = 1; // Version
+	int steps = 0;
 	cout << "Colatz conjecture simulator v." << major << "." << minor << endl; // Start message
 	cout << "Press any key to continue..." << endl;
 	c = _getch(); // Get's 'any' key
@@ -99,6 +100,7 @@ int main()
 	{
 		repeat = true; // repeats the loop
 		ask = true; // asks if to repeat the loop
+		steps = 0;
 		cout << "Enter a number\n>"; // asks for num
 		cin >> num; // asks for num input
 		Sleep(delay2); // delay after num selection
@@ -109,13 +111,17 @@ int main()
 			if (isOdd(num) == true && num != 1) // checks if num is odd and is not 1. If true...
 			{
 				num = evenP(num); // ...divides by 2
+				steps++; // Adds 1 step to the counter
 			}
 			else if (isOdd(num) == false && num != 1) // checks if num is not odd and not 1. If true...
 			{
 				num = oddP(num); // ...multiplies by 3 and adds 1
+				steps++; // Adds 1 step to the counter
 			}
 			Sleep(delay1); // delay between outputs
 		} while (num != 1); // repeats as long as num is NOT 1
+
+		cout << "Steps: " << steps << endl;
 
 		while (ask) // loops the y/n in case the input is invalid
 		{
